@@ -48,10 +48,20 @@
 		}
 
 		public function display($file) {
+			$loadfile = $file;
 			$file = APP.'/views/'.$file;
 			if (is_file($file)) {
-				extract($this->assign);
-				include $file;
+				//引入twig模版引擎
+				\Twig_Autoloader::register();
+
+				$loader = new \Twig_Loader_Filesystem(APP.'/views');
+				$twig = new \Twig_Environment($loader, array(
+				    'cache' => PANDA.'/cache/twig',
+				    'debug' => DEBUG
+				));
+				$template = $twig->loadTemplate($loadfile);
+				$template->display($this->assign?$this->assign:'');
+
 			}
 		}
 	}

@@ -1,8 +1,9 @@
+{% extends "layout.html" %}
+{% block content %}
 <meta charset="UTF-8">
 <title>熊猫PHP - 后台管理</title>
-<header>
 	<div class="menu" style="margin:0 auto;text-align:center;margin-top:40px;font-size:20px">
-		<h1><?php echo $title;?></h1>
-		<h3><?php echo $data;?></h3>
+		<h1>{{title}}</h1>
+		<h3>{{data}}</h3>
 	</div>
-</header>
+{% endblock %}
